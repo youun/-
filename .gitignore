@@ -1,32 +1,51 @@
-# Prerequisites
-*.d
+// This program performs simple arithmetic calculations based on user input
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+using System;
 
-# Precompiled Headers
-*.gch
-*.pch
+namespace SimpleCalculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double num1, num2, result;
+            string op;
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+            Console.WriteLine("Welcome to Simple Calculator!");
+            Console.WriteLine("Please enter the first number:");
+            num1 = Convert.ToDouble(Console.ReadLine());
 
-# Fortran module files
-*.mod
-*.smod
+            Console.WriteLine("Please enter the second number:");
+            num2 = Convert.ToDouble(Console.ReadLine());
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+            Console.WriteLine("Please enter the operation (+, -, *, /):");
+            op = Console.ReadLine();
 
-# Executables
-*.exe
-*.out
-*.app
+            switch (op)
+            {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    if (num2 == 0)
+                    {
+                        Console.WriteLine("Error: Division by zero");
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+                default:
+                    Console.WriteLine("Error: Invalid operation");
+                    return;
+            }
+
+            Console.WriteLine("Result: " + result);
+        }
+    }
+}
